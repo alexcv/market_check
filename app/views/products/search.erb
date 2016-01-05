@@ -1,0 +1,20 @@
+<div>
+  <% if @prices.present? %>
+    <h3>
+      <%= "Here is the list of prices for #{@product_name} from #{@market}" %>
+    </h3>
+    <%= render partial: 'price_list' %>
+    <p>
+      * For simplicity I take only first page, otherwise I need to add and configure some
+        framework to support background jobs in order to pararel requests to reduce search time.
+    </p>
+  <% else %>
+    <h3>
+      <%= "No prices found for #{@product_name} on #{@market}" %>
+    </h3>  
+  <% end %> 
+</div>
+
+<div>
+  <%= link_to 'Back', '/' %>
+</div>

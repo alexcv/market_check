@@ -1,0 +1,66 @@
+<div class='center_text'>
+  <h3> 
+    Welcome, please enter data in one of the following sections:
+  </h3>
+</div>
+
+<table class='center'>
+  <th>
+    Get prices from other market
+  </th>
+  <th>
+    Calculate minimum price
+  </th>
+  <tr>
+    <td>
+      <%= form_tag '/products/search' do %>
+        <div>
+          <%= label_tag 'Market' %>
+          <%= select_tag 'market', options_for_select(["Amazon"]) %>
+          </br>
+          * please choose market
+        </div>
+
+        <div>  
+          <%= label_tag 'Product Name' %>
+          <%= text_field_tag 'product_name' %>
+          </br>
+          * please insert product name e.g. "Apple iPad Air 2 64GB"
+        </div>
+
+        <div>
+          <%= submit_tag 'get prices' %>
+        </div>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_tag '/products/profitability' do %>
+        <div>
+          <%= label_tag 'Please insert your product purchase price' %>
+          <%= number_field_tag 'product_price_amount' %>
+        </div>
+
+        <div>
+          <%= label_tag 'Please insert market listing fee in(%) (default 10%)' %>
+          <%= number_field_tag 'listing_fee', 10 %>
+        </div>
+
+        <div>
+          <%= label_tag 'Please insert minimum profit margin you want to get in(%) (default 10%)' %>
+          <%= number_field_tag 'profit_margin', 10 %>
+        </div>
+
+        <div>
+          <%= submit_tag 'calculate' %>
+        </div>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<div class='center_text'>
+  <% if flash[:error] %>
+    <h3 class='negative'><%= flash[:error] %></h3>
+  <% end %>
+</div>
